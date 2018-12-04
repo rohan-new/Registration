@@ -21,7 +21,7 @@ let userController = ({ app,bcrypt,path,request },db) => {
             }else{
                 utility.insertUserDetails(username,email,password).then((result)=>{
                     console.log('User Created');
-                    res.send('ss')
+                    res.send('User Created')
                 });
             }
         })
