@@ -24,7 +24,7 @@ const validateIp =(req,res,next)=>{
                 })
             }
         }else{
-            db.collection('users_ip').updateOne({ip:userIp},{hits:1,createdAt:currentDate},(err,doc)=>{
+            db.collection('users_ip').updateOne({ip:userIp},{$set:{hits:1,createdAt:currentDate}},(err,doc)=>{
                 if(err) reject(err);
                 next();
             })

@@ -45,9 +45,13 @@ let userController = ({ app,bcrypt,path,request },db) => {
                 return  res.render(pathjoin_captcha);
             }
             var userIp = req.ip;
+            console.log(userIp)
             var currentDate = new Date();
-            db.collection('users_ip').updateOne({ip:userIp},{hits:1,createdAt:currentDate},(err,doc)=>{
-                if(err) return res.json(err);
+            db.collection('users_ip').updateOne({ip:userIp},{$set:{hits:1,createdAt:currentDate}},(err,doc)=>{
+
+                if(err) {
+                    console.log(err)
+                    return res.json(err)};
                 return  res.render(pathjoin);
             });
            
